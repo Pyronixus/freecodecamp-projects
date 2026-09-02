@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 2rem;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    min-height: 100vh;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#markdown-input, #html-output, #preview {
+    width: 100%;
+    height: 180px;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(12px);
+    color: #e6edf3;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#markdown-input {
+    resize: none;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    outline: none;
+}
+
+#markdown-input:focus {
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15), 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+#html-output {
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    color: #58a6ff;
+}
+
+#preview {
+    background: rgba(22, 27, 34, 0.95);
+}
+
+#preview h1, #preview h2, #preview h3 {
+    color: #f0f6fc;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.3rem;
+}
+
+#preview h1 { font-size: 1.6rem; }
+#preview h2 { font-size: 1.3rem; }
+#preview h3 { font-size: 1.1rem; }
+
+#preview a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+#preview a:hover {
+    text-decoration: underline;
+}
+
+#preview blockquote {
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 4px solid #f78166;
+    color: #8b949e;
+}
+
+#preview img {
+    max-width: 100%;
+    border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+    #container {
+        flex-direction: row;
+    }
+    
+    #markdown-input, #html-output, #preview {
+        height: 450px;
+        flex: 1;
+    }
+}

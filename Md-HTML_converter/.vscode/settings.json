@@ -1,0 +1,21 @@
+{
+  // Désactive l'autocomplétion en ligne native / Inline Completion (ex: GitHub Copilot, Windsurf)
+  "editor.inlineSuggest.enabled": false,
+
+  // Optionnel : Désactive le widget de suggestions automatiques (IntelliSense) pendant la frappe
+  "editor.quickSuggestions": {
+    "other": "off",
+    "comments": "off",
+    "strings": "off"
+  },
+
+  // Configuration spécifique pour GitHub Copilot (si tu l'utilises)
+  "github.copilot.enable": {
+    "*": false
+  },
+
+  // Configuration spécifique pour Windsurf / Codeium (si tu l'utilises)
+  "codeium.enableCodeLens": false,
+  "codeium.enableSearch": false,
+  "windsurf.autocomplete.enable": false
+}
