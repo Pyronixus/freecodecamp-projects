@@ -1,21 +1,25 @@
 const pads = document.querySelectorAll(".drum-pad");
 const disp = document.getElementById("display");
 
-// play sound
 function playSound(audioElement, isKeyboard = false) {
   if (!audioElement) return;
 
   audioElement.currentTime = 0;
-  audioElement.play();
 
-  const soundName = audioElement.parentElement.id;
-  disp.innerText = soundName;
+  // Exécute la lecture sans bloquer la promesse
+  const playPromise = audioElement.play();
+  if (playPromise !== undefined) {
+    playPromise.catch((err) => {});
+  }
 
-  // animation for keydown like on click
-  if (isKeyboard) {
+  if (audioElement.parentElement) {
+    disp.innerText = audioElement.parentElement.id;
+  }
+
+  // animation for keydown
+  if (isKeyboard && audioElement.parentElement) {
     const button = audioElement.parentElement;
     button.classList.add("active");
-
     setTimeout(() => {
       button.classList.remove("active");
     }, 150);
@@ -31,8 +35,15 @@ pads.forEach((pad) => {
 });
 
 // keydown
-window.addEventListener("keydown", (event) => {
-  const key = event.key.toUpperCase();
+document.addEventListener("keydown", (e) => {
+  let key = "";
+
+  if (e.key) {
+    key = e.key.toUpperCase();
+  } else if (e.keyCode) {
+    key = String.fromCharCode(e.keyCode).toUpperCase();
+  }
+
   const audio = document.getElementById(key);
 
   if (audio) {
